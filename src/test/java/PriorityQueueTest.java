@@ -1,7 +1,17 @@
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import java.util.PriorityQueue;
 import java.util.stream.Stream;
 
-@TestMethodOrder(OrderAnnotation.class)
+import static org.junit.jupiter.api.Assertions.*;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PriorityQueueTest {
 
     private static Stream<Arguments> provider() {
@@ -32,19 +42,17 @@ public class PriorityQueueTest {
     @Order(2)
     public void whenExceptionThrown_thenAddNull() {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
-        Exception ex = assertThrows(NullPointerException.class, ()->{
-            pq.add(null);
-        });
-        assertEquals(null, ex.getMessage());
+        Exception ex = assertThrows(NullPointerException.class, ()-> pq.add(null));
+        assertNull(ex.getMessage());
     }
 
     @Test
     @Order(3)
     public void whenExceptionThrown_thenInitialCapacityLessThan1() {
         Exception ex = assertThrows(IllegalArgumentException.class, ()->{
-            PriorityQueue<Integer> pq = new PriorityQueue<Integer>(-1);
+            PriorityQueue<Integer> pq = new PriorityQueue<>(-1);
         });
-        assertEquals(null, ex.getMessage());
+        assertNull(ex.getMessage());
     }
 
     @Test
@@ -54,6 +62,6 @@ public class PriorityQueueTest {
             PriorityQueue<String> pq = new PriorityQueue<>();
             pq.offer(null);
         });
-        assertEquals(null, ex.getMessage());
+        assertNull(ex.getMessage());
     }
 }
