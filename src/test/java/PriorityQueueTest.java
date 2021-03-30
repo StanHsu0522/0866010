@@ -25,18 +25,18 @@ public class PriorityQueueTest {
         );
     }
 
-//    @ParameterizedTest(name = "#{index} - Test with Argument={arguments}")
-//    @MethodSource("provider")
-//    @Order(1)
-//    public void PriorityQueue_RunTest(int[] inputted_arr, int[] expected_arr) {
-//        PriorityQueue<Integer> pq = new PriorityQueue<>(inputted_arr.length);
-//        for (int i : inputted_arr) {
-//            pq.add(i);
-//        }
-//        for(int i : expected_arr) {
-//            assertEquals(i, pq.poll());
-//        }
-//    }
+    @ParameterizedTest(name = "#{index} - Test with Argument={arguments}")
+    @MethodSource("provider")
+    @Order(1)
+    public void PriorityQueue_RunTest(int[] inputted_arr, int[] expected_arr) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(inputted_arr.length);
+        for (int i : inputted_arr) {
+            pq.add(i);
+        }
+        for(int i : expected_arr) {
+            assertEquals(i, pq.poll());
+        }
+    }
 
     @Test
     @Order(2)
