@@ -16,7 +16,7 @@ public class PriorityQueueTest {
 
     private static Stream<Arguments> provider() {
         return Stream.of(
-                Arguments.of(new int[]{2, 3, 1}, new int[]{1, 2, 3}),
+                Arguments.of(new int[]{2, 3, 1}, new int[]{2, 1, 3}),
                 Arguments.of(new int[]{4, 5, 6, 0, 2, 3}, new int[]{0, 2, 3, 4, 5, 6}),
                 Arguments.of(new int[]{0}, new int[]{0}),
                 Arguments.of(new int[]{11, 12234567, 1235134645, 621345634},
