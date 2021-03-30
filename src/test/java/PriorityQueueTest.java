@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PriorityQueueTest {
 
     private static Stream<Arguments> provider() {
@@ -27,7 +27,7 @@ public class PriorityQueueTest {
 
     @ParameterizedTest(name = "#{index} - Test with Argument={arguments}")
     @MethodSource("provider")
-    @Order(1)
+//    @Order(1)
     public void PriorityQueue_RunTest(int[] inputted_arr, int[] expected_arr) {
         PriorityQueue<Integer> pq = new PriorityQueue<>(inputted_arr.length);
         for (int i : inputted_arr) {
@@ -38,30 +38,30 @@ public class PriorityQueueTest {
         }
     }
 
-    @Test
-    @Order(2)
-    public void whenExceptionThrown_thenAddNull() {
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
-        Exception ex = assertThrows(NullPointerException.class, ()-> pq.add(null));
-        assertNull(ex.getMessage());
-    }
-
-    @Test
-    @Order(3)
-    public void whenExceptionThrown_thenInitialCapacityLessThan1() {
-        Exception ex = assertThrows(IllegalArgumentException.class, ()->{
-            PriorityQueue<Integer> pq = new PriorityQueue<>(-1);
-        });
-        assertNull(ex.getMessage());
-    }
-
-    @Test
-    @Order(4)
-    public void whenExceptionThrown_thenOfferNull() {
-        Exception ex = assertThrows(NullPointerException.class, ()->{
-            PriorityQueue<String> pq = new PriorityQueue<>();
-            pq.offer(null);
-        });
-        assertNull(ex.getMessage());
-    }
+//    @Test
+//    @Order(2)
+//    public void whenExceptionThrown_thenAddNull() {
+//        PriorityQueue<Integer> pq = new PriorityQueue<>();
+//        Exception ex = assertThrows(NullPointerException.class, ()-> pq.add(null));
+//        assertNull(ex.getMessage());
+//    }
+//
+//    @Test
+//    @Order(3)
+//    public void whenExceptionThrown_thenInitialCapacityLessThan1() {
+//        Exception ex = assertThrows(IllegalArgumentException.class, ()->{
+//            PriorityQueue<Integer> pq = new PriorityQueue<>(-1);
+//        });
+//        assertNull(ex.getMessage());
+//    }
+//
+//    @Test
+//    @Order(4)
+//    public void whenExceptionThrown_thenOfferNull() {
+//        Exception ex = assertThrows(NullPointerException.class, ()->{
+//            PriorityQueue<String> pq = new PriorityQueue<>();
+//            pq.offer(null);
+//        });
+//        assertNull(ex.getMessage());
+//    }
 }
